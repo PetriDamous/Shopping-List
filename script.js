@@ -6,19 +6,18 @@ var listItems = document.querySelectorAll('li');
 userButton.addEventListener('click', addToListClick);
 userInput.addEventListener('keypress', addToListPress);
 
-/*
-for(var i = 0; i < listItems.length; i++){
-    listItems[i].addEventListener('click', function(){
-        console.log(i);
+
+listItems.forEach(function(item){
+    item.addEventListener('click', function(){
+        item.classList.toggle('done');
     });
-    
-}
+});
 
 function listItemsClick(i){
     return console.log(i);
 
 }
-*/
+
 
 
 function addToListClick(){
@@ -40,8 +39,9 @@ function addToListPress(event){
 function addToList(){    
     var li = document.createElement('li');
     var text = document.createTextNode(userInput.value);
-    li.appendChild(text);
-    ul.appendChild(li);
+    li.appendChild(text);    
+    ul.appendChild(li); 
+    li.classList.toggle('done');   
     userInput.value = '';       
 }
 
