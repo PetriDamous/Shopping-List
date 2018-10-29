@@ -20,13 +20,7 @@ function listItemsClick(i){
 
 
 
-function addToListClick(){
-    if(userInputCheck()){
-        addToList();
-    } else{
-        noBlank();
-    }
-}
+function addToListClick(){ return userInputCheck() ? addToList() : noBlank(); }
 
 function addToListPress(event){
     if(userInputCheck() && userButtonCheck(event)){
@@ -45,24 +39,10 @@ function addToList(){
     userInput.value = '';       
 }
 
-function noBlank(){
-    return alert('Cannot be blank.');
-}
+function noBlank(){ return alert('Cannot be blank.'); }
 
-function userButtonCheck(e){
-    if(e.keyCode === 13){
-        return true;
-    } else{
-        return false;
-    }
-}
+function userButtonCheck(e){ return e.keyCode === 13 ? true : false; }
 
-function userInputCheck(){
-    if(userInput.value.length > 0){
-        return true;
-    } else{
-        return false;
-    }    
-}
+function userInputCheck(){ return userInput.value.length > 0 ? true : false; }
 
 
