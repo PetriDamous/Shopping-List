@@ -6,12 +6,25 @@ var listItems = document.querySelectorAll('li');
 userButton.addEventListener('click', addToListClick);
 userInput.addEventListener('keypress', addToListPress);
 
+crossOff();
 
-listItems.forEach(function(item){
-    item.addEventListener('click', function(){
-        item.classList.toggle('done');
-    });
-});
+function crossOff(){
+    
+    listItems.forEach(function(item, i){
+        item.classList.add('unCross');
+        item.addEventListener('click', function(){
+            //item.classList.toggle('done', true);
+            if(item.classList[0] == 'unCross'){
+                item.classList.replace('unCross', 'cross');
+               console.log(item.classList[0]);
+            } else if(item.classList[0] == 'cross'){
+                item.classList.replace('cross', 'unCross');
+                console.log(item.classList[0]);
+            }
+        });
+    });     
+}
+
 
 function listItemsClick(i){
     return console.log(i);
@@ -35,7 +48,8 @@ function addToList(){
     var text = document.createTextNode(userInput.value);
     li.appendChild(text);    
     ul.appendChild(li); 
-    li.classList.toggle('done');   
+    listItems = document.querySelectorAll('li');
+    crossOff();       
     userInput.value = '';       
 }
 
